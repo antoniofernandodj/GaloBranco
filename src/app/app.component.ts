@@ -38,8 +38,8 @@ export class AppComponent {
       }
     })
 
-    let obs2$ = this.modalService.showModalUntilConfirm(obs1$)
-
-    obs2$.subscribe((result) => result())
+    this.modalService.showModalUntilConfirm(obs1$).subscribe(
+      (result) => result()
+    )
   }
 }
