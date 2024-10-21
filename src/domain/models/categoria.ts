@@ -1,9 +1,9 @@
 export class Categorias {
-    id: string
+    _id: string | null
     name: string
 
     constructor(id: string, name: string) {
-        this.id = id;
+        this._id = id;
         this.name = name;
     }
 

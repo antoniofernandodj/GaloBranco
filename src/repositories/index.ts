@@ -1,13 +1,13 @@
 import { Injectable } from "@angular/core"
-import { DatabaseUrl, FlexiService } from "../app/flexi.service"
 import { Avaliacoes } from "../domain/models/avaliacoes"
-import { Categorias } from "../domain/models/categorias"
-import { Enderecos } from "../domain/models/enderecos"
-import { Favoritos } from "../domain/models/favoritos"
-import { Loja } from "../domain/models/lojas"
-import { Profissional } from "../domain/models/profissionais"
-import { Usuario } from "../domain/models/usuarios"
-import { settings } from "../env"
+import { Categorias } from "../domain/models/categoria"
+import { Endereco } from "../domain/models/endereco"
+import { Favoritos } from "../domain/models/favorito"
+import { Loja } from "../domain/models/loja"
+import { Profissional } from "../domain/models/profissional"
+import { Usuario } from "../domain/models/usuario"
+import { Observable } from "rxjs"
+import { FlexiService } from "../domain/services/flexi.service"
 
 
 class ApiCreateResponse {
@@ -71,23 +71,23 @@ class BaseRepository {
         this.repo = repo
     }
 
-    save(payload: any) {
+    save(payload: any): Observable<{message: string, id: string}> {
         return this.repo.save(payload)
     }
 
-    find(id: string) {
+    find(id: string): Observable<any> {
         return this.repo.find(id)
     }
 
-    findMany(filters: any) {
+    findMany(filters: any): Observable<Array<any>>  {
         return this.repo.findMany(filters)
     }
 
-    delete(id: string) {
+    delete(id: string): Observable<{message: string}> {
         return this.repo.delete(id)
     }
 
-    update(id: string, payload: any) {
+    update(id: string, payload: any): Observable<{message: string}> {
         return this.repo.update(id, payload)
     }
 }

@@ -1,0 +1,65 @@
+<p>signup works!</p>
+
+
+<form [formGroup]="signupForm" (ngSubmit)="onSumbit()">
+
+    <div>
+        <label for="">Nome</label>
+        <input type="text" formControlName="name">
+    </div>
+
+    <div
+        class="red-alert"
+        *ngIf="signupForm.controls['name'].invalid && signupForm.controls['name'].touched">
+        o nome é obrigatório
+    </div>
+
+    <div>
+        <label for="">Username</label>
+        <input type="text" formControlName="username">
+    </div>
+
+    <div
+        class="red-alert"
+        *ngIf="signupForm.controls['username'].invalid && signupForm.controls['username'].touched">
+        o username é obrigatório
+    </div>
+
+    <div>
+        <label for="">email</label>
+        <input type="text" formControlName="email">
+    </div>
+
+    <div
+        class="red-alert"
+        *ngIf="signupForm.controls['email'].invalid && signupForm.controls['email'].touched">
+        o email é obrigatório
+    </div>
+
+    <div>
+        <label for="">Senha</label>
+        <input type="password" formControlName="password">
+    </div>
+
+    <div
+        class="red-alert"
+        *ngIf="signupForm.controls['password'].invalid && signupForm.controls['password'].touched">
+        a senha é obrigatório
+    </div>
+
+    <div>
+        <label for="">role</label>
+        <input type="text" formControlName="role">
+    </div>
+
+    <div
+        class="red-alert"
+        *ngIf="signupForm.controls['role'].invalid && signupForm.controls['role'].touched">
+        o role é obrigatório
+    </div>
+
+    <div>
+        <button type="submit" [disabled]="signupForm.invalid">Cadastrar</button>
+    </div>
+
+</form>

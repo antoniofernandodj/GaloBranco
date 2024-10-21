@@ -2,7 +2,7 @@ import {
     Categorias,
     Usuario,
     Avaliacoes,
-    Enderecos,
+    Endereco,
     Favoritos,
     Loja,
     Profissional,

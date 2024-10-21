@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
-
 import { FlexiService } from './flexi.service';
+
 
 describe('FlexiService', () => {
   let service: FlexiService;

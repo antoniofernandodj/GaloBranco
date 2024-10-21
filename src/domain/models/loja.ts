@@ -1,5 +1,5 @@
 export class Loja {
-    id: string
+    _id: string | null
     name: string
     description: string
     category: string
@@ -8,8 +8,8 @@ export class Loja {
     userId: string
     rating: number
 
-    constructor(id: string, name: string, description: string, category: string, address: string, contactInfo: string, userId: string, rating: number = 0) {
-        this.id = id;
+    constructor(name: string, description: string, category: string, address: string, contactInfo: string, userId: string, rating: number = 0) {
+        this._id = null;
         this.name = name;
         this.description = description;
         this.category = category;

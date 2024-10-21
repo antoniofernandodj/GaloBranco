@@ -1,7 +1,7 @@
-export { Categorias } from "./categorias";
-export { Usuario } from "./usuarios";
+export { Categorias } from "./categoria";
+export { Usuario } from "./usuario";
 export { Avaliacoes } from "./avaliacoes";
-export { Enderecos } from "./enderecos";
-export { Favoritos } from "./favoritos";
-export { Loja } from "./lojas";
-export { Profissional } from "./profissionais";
+export { Endereco } from "./endereco";
+export { Favoritos } from "./favorito";
+export { Loja } from "./loja";
+export { Profissional } from "./profissional";

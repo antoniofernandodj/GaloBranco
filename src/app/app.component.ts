@@ -1,44 +1,45 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import { FlexiService } from './flexi.service';
-import { Usuario } from '../domain/models';
-import { UsuarioRepository } from '../repositories';
+import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { ModalComponent } from './components/modal/modal.component';
+import { of } from 'rxjs';
+import { ModalService } from './services/modal.service';
 
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [
+    RouterOutlet,
+    CommonModule,
+    RouterOutlet,
+    RouterLink,
+    RouterLinkActive,
+    ModalComponent
+  ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  title = 'GaloBranco';
 
-  constructor(private usuarioRepository: UsuarioRepository) {}
+  constructor(protected modalService: ModalService) {}
 
-  ngOnInit() {}
+  show() {
+    this.modalService.show()
+  }
 
-  cadastrar() {
-    let usuario = new Usuario(
-      'asdasd',
-      'antonio',
-      'antonio@email.com',
-      '123456',
-      'consumidor'
-    )
+  onConfirm(buttonValue: any) {
 
-    let observable = this.usuarioRepository.save(usuario)
-
-    observable.subscribe((result) => {
-      let { id, message } = result
-      console.log({ id, message })
+    let obs1$ = of(() => {
+      if (buttonValue === true) {
+        console.log('Confirmado!');
+      } else {
+        console.log('Cancelado!');
+      }
     })
+
+    let obs2$ = this.modalService.showModalUntilConfirm(obs1$)
+
+    obs2$.subscribe((result) => result())
   }
 }
-
-//  flexi = flexi.setCollection('Exemplo')
-
-//     const response = flexi.create({ola: 'mundo'})
-
-//     console.log({response: response})   

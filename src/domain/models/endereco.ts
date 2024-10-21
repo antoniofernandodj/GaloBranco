@@ -1,5 +1,5 @@
-export class Enderecos {
-    id: string
+export class Endereco {
+    _id: string | null
     userId: string | null
     storeId: string | null
     professionalId: string | null
@@ -9,7 +9,7 @@ export class Enderecos {
     coordinates: string
 
     constructor(id: string, userId: string, storeId: string, professionalId: string, street: string, city: string, postalCode: string, coordinates: string) {
-        this.id = id;
+        this._id = id;
         this.userId = userId || null;
         this.storeId = storeId || null;
         this.professionalId = professionalId || null;

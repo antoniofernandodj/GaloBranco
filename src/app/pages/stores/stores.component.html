@@ -1,0 +1,94 @@
+<p>Cadastrar Nova Loja</p>
+
+<form [formGroup]="lojaForm" (ngSubmit)="onSubmit()">
+
+    <div>
+        <label for="name">Nome</label>
+        <input
+            formControlName="name"
+            id="name"
+            type="text"
+        />
+        <div *ngIf="lojaForm.controls['name'].invalid && lojaForm.controls['name'].touched">
+            O nome é obrigatório.
+        </div>
+    </div>
+
+    <div>
+        <label for="description">Descrição</label>
+        <textarea
+            formControlName="description"
+            id="description"
+        ></textarea>
+        <div *ngIf="lojaForm.controls['description'].invalid && lojaForm.controls['description'].touched">
+            A descrição é obrigatória.
+        </div>
+    </div>
+
+    <div>
+        <label>Categorias</label>
+        <div formArrayName="categories">        
+          <div *ngFor="let category of categories.controls; let i = index">
+            <input [formControlName]="i" placeholder="Categoria" />
+            <button type="button" (click)="removeCategory(i)">Remover</button>
+          </div>
+        </div>
+        <button type="button" (click)="addCategory()">Adicionar Categoria</button>
+      </div>
+
+    <div>
+        <label for="address">Endereço</label>
+        <input
+            formControlName="address"
+            id="address"
+            type="text"
+        />
+        <div *ngIf="lojaForm.controls['address'].invalid && lojaForm.controls['address'].touched">
+            O endereço é obrigatório.
+        </div>
+    </div>
+
+    <div>
+        <label for="contactInfo">Informações de Contato</label>
+        <input
+            formControlName="contactInfo"
+            id="contactInfo"
+            type="text"
+        />
+        <div *ngIf="lojaForm.controls['contactInfo'].invalid && lojaForm.controls['contactInfo'].touched">
+            As informações de contato são obrigatórias.
+        </div>
+    </div>
+
+    <div>
+        <label for="rating">Avaliação</label>
+        <input
+            formControlName="rating"
+            id="rating"
+            type="number"
+            min="0"
+            max="5"
+        />
+        <div *ngIf="lojaForm.controls['rating'].invalid && lojaForm.controls['rating'].touched">
+            A avaliação deve ser entre 0 e 5.
+        </div>
+    </div>
+
+    <div>
+        <button type="submit">Cadastrar Loja</button>
+        <!-- [disabled]="lojaForm.invalid" para desabilitar o botão se o formulário for inválido -->
+    </div>
+
+</form>
+
+
+@for (loja of reloadObservable$ | async; track loja._id) {
+    <h2 class="loja-name">{{ loja.name }}</h2>
+    <div class="loja-details">
+        <p><strong>ID:</strong> {{ loja._id }}</p>
+        <p><strong>Endereço:</strong> {{ loja.address }}</p>
+        <p><strong>Categoria:</strong> {{ loja.category }}</p>
+        <p><strong>Informações de Contato:</strong> {{ loja.contactInfo }}</p>
+        <p><strong>Descrição:</strong> {{ loja.description }}</p>
+    </div>
+}

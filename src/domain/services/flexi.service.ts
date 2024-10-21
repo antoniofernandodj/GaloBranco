@@ -1,7 +1,8 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { settings } from '../env';
+import { settings } from '../../env';
+
 
 type OperationBody = {
   document_id?: string,
@@ -25,7 +26,7 @@ export class FlexiService {
     }
 
     const url = new DatabaseUrl(
-      settings.hostName, settings.dbName, collectionNameOrModelClass
+      settings.hostName, settings.dbName, collectionName
     )
 
     try {

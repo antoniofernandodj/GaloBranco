@@ -1,0 +1,13 @@
+@if (isVisible) {
+  <div class="modal">
+      <div class="modal-content">
+        <ng-content></ng-content>
+  
+        <div class="modal-buttons">
+          <button *ngFor="let button of buttons" (click)="onButtonClick(button)">
+            {{ button.label }}
+          </button>
+        </div>
+      </div>
+  </div>
+}

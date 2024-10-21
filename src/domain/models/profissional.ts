@@ -1,5 +1,5 @@
 export class Profissional {
-    id: string
+    _id: string | null
     name: string
     serviceType: string
     description: string
@@ -8,7 +8,7 @@ export class Profissional {
     rating: number
 
     constructor(id: string, name: string, serviceType: string, description: string, contactInfo: string, userId: string, rating: number = 0) {
-        this.id = id;
+        this._id = id;
         this.name = name;
         this.serviceType = serviceType;
         this.description = description;
